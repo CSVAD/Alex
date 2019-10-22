@@ -1,0 +1,3 @@
+## Ribbons
+
+The Goal of the ribbons code was to simulate the perlin noise examples from class except in 3d. The code currently draws a line based on the noises given for the angles in spherical coordinates. The colors of each of the lines changes as it moves forward based on a random number added to the individual values of RGB. I decided to have all the line originate from the same point since choosing random points resulted in a messy screen. One possiblity that I have not explored yet is starting the lines at different points structured in a particular fashion. The user has control over the noise in the line agents and the number of agents but not over the color. After 5 seconds the drawing resets but the colors for each  of the agents remains from round to round.
