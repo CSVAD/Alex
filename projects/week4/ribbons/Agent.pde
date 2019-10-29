@@ -40,9 +40,9 @@ class Agent {
 
 
     strokeWeight(strokeWidth);
-    red = (red + (int) random(-5, 5))% 255;
-    green = (green + (int) random(-5, 5)) % 255;
-    blue = (blue + (int) random(-5, 5)) % 255;
+    red = (red + (int) random(-10, 10))% 255;
+    green = (green + (int) random(-10, 10)) % 255;
+    blue = (blue + (int) random(-10, 10)) % 255;
     stroke(red, green, blue, agentsAlpha);
     line(pOld.x,pOld.y,pOld.z,p.x,p.y,p.z);
 
