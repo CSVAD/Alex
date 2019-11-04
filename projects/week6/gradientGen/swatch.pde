@@ -5,7 +5,6 @@ class Swatch{
  int gre;
  int blu;
  boolean selected;
-// boolean locked = false;
  
  Swatch(int x,int y, float r, int h, int s, int b){
   position = new PVector(x,y);
@@ -29,12 +28,6 @@ class Swatch{
     position.add(delta); 
  }
  
- //void updateColor(PVector delta, int mouseWheel){
- //  hue += delta.y;
- //  sat += delta.x;
- //  bri += mouseWheel;
-
- //}
  void draw(){
    colorMode(RGB,255);
    if(selected){
