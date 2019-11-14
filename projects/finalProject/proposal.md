@@ -1,0 +1,3 @@
+## Project Proposal
+
+This project will focus on using proGAN (progressive growing GAN) to generate images in the style of impressionist/post impressionist painters. Paul and I will be using a dataset constructed from scraping a combination of art wikis, image hosting sites and google images. The goal of this project is to create a network that produces images that exhibit the focus of brush strokes and light of the impressionist style. We are focusing on the impressionist sytle because of the focus on natural imagery in many of the artworks and the simpler shapes compounded with detailed brush strokes. This combination of overall simple shapes and detailled brush strokes will work well with the proGAN network to generate images that are both abstracted yet detailed.
