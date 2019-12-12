@@ -1,0 +1,74 @@
+import processing.pdf.*;
+import gab.opencv.*;
+
+import java.sql.Timestamp;
+
+OpenCV opencv;
+size(792,612);
+PImage img  = loadImage("jj2270.png");
+PImage edges;
+img.resize(792,612);
+opencv = new OpenCV(this, img);
+//opencv.flip(OpenCV.VERTICAL);
+opencv.gray();
+opencv.blur(4);
+//opencv.findSobelEdges(1, 0);
+//opencv.findScharrEdges(1);
+//opencv.threshold(30);
+//opencv.blur(2);
+//opencv.contrast(2.0);
+//opencv.equalizeHistogram();
+opencv.findCannyEdges(50, 100);
+opencv.blur(5);
+
+opencv.invert();
+edges = opencv.getSnapshot();
+
+//image(edges, 0, 0);
+ArrayList<PVector> points =  new ArrayList<PVector>();
+
+int edge = 10;
+int step = 1;
+float amp = 10.0;
+int res = (width - (edge*2)) / step;
+
+for(int i = edge; i <= height - edge; i+=5)
+{
+  for(int j = edge; j <= width - edge; j+=step)
+  {
+    float gray = 0.2126 * red(edges.get(j,i)) + 0.7152 * green(edges.get(j,i)) + 0.0722 * blue(edges.get(j,i));
+    gray = green(edges.get(j,i));
+    float offset = (gray / (255.0/amp));
+    //print(red(edges.get(i,j)));
+    points.add(new PVector(j, i + offset));
+  }
+}
+
+background(255);
+Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+beginRecord(PDF, timestamp.toString() + "plot.pdf"); 
+noFill();
+
+int g = 0;
+beginShape();
+stroke(0);
+for(int i = 0; i < points.size(); i++)
+{
+    if(i%(res+1) != res)
+    {
+        vertex(points.get(i).x,points.get(i).y);
+    }
+    else
+    {
+      endShape();
+      if(i > points.size() - res)
+      {
+        continue;
+      }
+      beginShape();
+      g++;
+    }
+    
+}
+print(g);
+endRecord();
